@@ -1,0 +1,6 @@
+10 int i = 0;
+20 if (i < 5)
+30 puts("aaa");
+40 i = i + 1;
+50 goto l20;
+60 endif

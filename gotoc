@@ -1,0 +1,38 @@
+#!/usr/bin/php
+<?php
+
+require_once ("src/globals.php");
+require_once ("src/read_and_store.php");
+require_once ("src/execute.php");
+require_once ("src/single_line_execution.php");
+require_once ("src/alert.php");
+require_once ("src/detect_variable.php");
+require_once ("src/colors.php");
+
+$run = false;
+for ($i = 1; $i < count($argv); ++$i)
+{
+  $v = $argv[$i];
+  if ($v == "-r")
+     $run = true;
+  else if ($v == "-d")
+     $debug = true;
+  else
+     $program = $v;
+}
+
+declare(ticks = 1);
+function sighandler(int $signo)
+{
+  global $running;
+
+  if (time() - $running > 3)
+    _system("");
+}
+pcntl_signal(SIGINT, "sighandler");
+
+_load("");
+if ($run)
+   _run("");
+while (1)
+      read_and_store();	

@@ -1,0 +1,14 @@
+5 int ret;
+10 int i0;
+15 goto l60;
+20 if (i0 < 0)
+30 i0 *= -1;
+40 endif;
+50 ret = i0;
+55 back;
+60 i0 = -2;
+70 call(20);
+80 printf("%d\n", ret);
+90 i0 = 4;
+100 call(20);
+110 printf("%d\n", ret);
