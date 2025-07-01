@@ -189,7 +189,7 @@ void plot(int x, int y, int color)
 	  (color >> 8) & 255,
 	  (color >> 16) & 255
 	  );
-  write(1, "..", 2);
+  write(1, "  ", 2);
 }
 
 int width()
