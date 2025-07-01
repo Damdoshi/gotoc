@@ -1,5 +1,13 @@
 <?php
 
+function _compile_help()
+{
+    echo output();
+    echo " - COMPILE COMMAND -\n";
+    echo "Compile your listing and write warnings and errors.\n";
+    echo "\n";
+}
+
 function _compile($line)
 {
     global $listing;
@@ -12,20 +20,33 @@ function _compile($line)
     $cnt = file_get_contents(__DIR__."/../../res/opening.c");
     $cc = "gcc";
     fwrite($fout, $cnt, strlen($cnt));
-    $keys = array_keys($listing);
+
+
+    $tmp_listing = $listing;
+    $tmp_listing[-10] = "__save_cpos();";
+    
+    $keys = array_keys($tmp_listing);
+    $max = max($keys) + 1;
+    $keys[] = $max + 1;
+    $tmp_listing[$max + 1] = "__restore_cpos();";
+    
     foreach ($keys as $idx => $k)
     {
-	$line = $listing[$k];
-	// detect variable
-	if (!detect_variable($line))
+	$line = $tmp_listing[$k];
+
+	if ($k >= 0)
 	{
-	    $label = "l$k:;\n";
-	    fwrite($fout, $label, strlen($label));
+	    // detect variable
+	    if (!detect_variable($line))
+	    {
+		$label = "l$k:;\n";
+		fwrite($fout, $label, strlen($label));
+	    }
+	    if (isset($keys[$idx + 1]))
+		$line = "#define l__AFTER l{$keys[$idx + 1]}\n$line\n#undef l__AFTER\n";
+	    else
+		$line = "#define l__AFTER __very_end\n$line\n";
 	}
-	if (isset($keys[$idx + 1]))
-	    $line = "#define l__AFTER l{$keys[$idx + 1]}\n$line\n#undef l__AFTER\n";
-	else
-	    $line = "#define l__AFTER __very_end\n$line\n";
 	
 	fwrite($fout, $line, strlen($line));
 	if (strstr($line, "gfx_mode"))

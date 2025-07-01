@@ -1,0 +1,9 @@
+10 int x;
+20 x = 0;
+30 int y;
+40 y = height() / 2;
+50 if (x < width())
+60 plot(x, y, 0xffffff);
+70 x = x + 1;
+80 goto l50;
+90 endif

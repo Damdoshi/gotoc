@@ -1,5 +1,13 @@
 <?php
 
+function _load_help()
+{
+    echo output();
+    echo " - LOAD COMMAND -\n";
+    echo "Close current file and load another specified one.\n";
+    echo "\n";
+}
+
 function _load($line)
 {
     global $program;

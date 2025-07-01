@@ -2,6 +2,7 @@
 
 function _help_help()
 {
+    echo output();
     echo " - HELP COMMAND -\n";
     echo "Type 'help command' to get more about a specific command\n";
     echo "\n";

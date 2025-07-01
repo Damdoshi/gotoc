@@ -1,5 +1,15 @@
 <?php
 
+function _run_help()
+{
+    echo output();
+    echo " - RUN COMMAND -\n";
+    echo "Compile and run the current program.\n";
+    echo "You can precise parameters.\n";
+    echo "Argc, argv and env are available.\n";
+    echo "\n";
+}
+
 function _run($line)
 {
     global $program;

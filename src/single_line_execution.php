@@ -22,7 +22,9 @@ function single_line_execution($line)
 	$max = 0;
     else
 	$max = max(array_keys($listing)) + 1;
+    $listing[-10] = "__save_cpos();";
     $listing[$max] = $line;
+    $listing[$max + 1] = "__restore_cpos();";
     _compile("");
     _run("");
     `rm -f $program.gtc .$program.c $program`;
