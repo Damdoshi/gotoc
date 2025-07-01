@@ -17,6 +17,8 @@ for ($i = 1; $i < count($argv); ++$i)
      $run = true;
   else if ($v == "-d")
      $debug = true;
+  else if ($v == "-g")
+     $only_goto = true;
   else
      $program = $v;
 }

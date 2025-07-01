@@ -1,0 +1,14 @@
+10 int x;
+20 int y;
+30 x = y = 0;
+40 if (y < 40)
+50 x = 0;
+60 if (x < 40)
+70 putchar('.');
+80 x = x + 1;
+90 goto l60;
+100 done
+105 putchar('\n');
+110 y = y + 1;
+120 goto l40;
+130 done

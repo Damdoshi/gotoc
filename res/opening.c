@@ -52,14 +52,26 @@ void text_mode()
 #endif
 
 #define if(a) if (a) {
-#define while(a) while (a) {
-#define for(a) for (a) {
-#define do do {
 #define endif }
-#define endwhile }
-#define endfor }
-#define next }
-#define enddo(a) } while (a)
+#define fi endif
+
+#ifndef ONLY_GOTO
+# define while(a) while (a) {
+# define endwhile }
+# define wend endwhile
+
+# define for(a) for (a) {
+# define endfor }
+# define next endfor
+# define fend endfor
+
+# define done }
+
+# define do do {
+# define enddo(a) } while (a)
+# define dend(a) enddo(a)
+#endif
+
 #define call(f) __callstack[__cstop++] = && l ## __AFTER; goto l ## f;
 #define back goto *__callstack[--__cstop];
 

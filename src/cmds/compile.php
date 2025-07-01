@@ -5,6 +5,7 @@ function _compile($line)
     global $listing;
     global $program;
     global $debug;
+    global $only_goto;
 
     $out = ".$program.c";
     $fout = fopen($out, "w");
@@ -39,6 +40,8 @@ function _compile($line)
 	$flags = "-g -g3 -ggdb";
     else
 	$flags = "-O2 -ffast-math";
+    if ($only_goto)
+	$flags .= " -DONLY_GOTO";
     echo `$cc $out -o $program -w -Wno-unused-label -Wno-unused-parameter $flags`;
     if (!$debug)
 	`rm -f $out`;
