@@ -15,7 +15,7 @@ function _compile($line)
     global $debug;
     global $only_goto;
 
-    $out = ".$program.c";
+    $out = dirname("$program.c")."/.".basename($program).".c";
     $fout = fopen($out, "w");
     $cnt = file_get_contents(__DIR__."/../../res/opening.c");
     $cc = "gcc";
@@ -23,12 +23,15 @@ function _compile($line)
 
 
     $tmp_listing = $listing;
-    $tmp_listing[-10] = "__save_cpos();";
+    $tmp_listing[0] = "__save_cpos();";
     
     $keys = array_keys($tmp_listing);
     $max = max($keys) + 1;
     $keys[] = $max + 1;
     $tmp_listing[$max + 1] = "__restore_cpos();";
+
+    ksort($tmp_listing, SORT_NUMERIC);
+    $keys = array_keys($tmp_listing);
     
     foreach ($keys as $idx => $k)
     {

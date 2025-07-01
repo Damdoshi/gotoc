@@ -21,8 +21,15 @@ function _list($line)
     $space = false;
     $min = 0;
     $max = 1e24;
-    
-    ksort($listing);
+
+    $padding = 0;
+    ksort($listing, SORT_NUMERIC);
+    $mx = max(array_keys($listing));
+    while ($mx >= 10)
+    {
+	$mx /= 10;
+	$padding += 1;
+    }
     
     $i = 0;
     $line = explode(" ", $line);
@@ -46,7 +53,20 @@ function _list($line)
 	if ($min <= $k && $k <= $max)
 	{
 	    ekko(alternate($i++));
-	    echo "$k $v\n";
+	    $sp = "";
+	    $dup = $k;
+	    $pad = 0;
+	    while ($dup >= 10)
+	    {
+		$dup /= 10;
+		$pad += 1;
+	    }
+	    while ($pad < $padding)
+	    {
+		$sp .= " ";
+		$pad += 1;
+	    }
+	    echo "$sp$k $v\n";
 	    if ($space && $i % 4 == 0)
 		fread(STDIN, 1);
 	}

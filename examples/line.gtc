@@ -1,9 +1,17 @@
-10 int x;
-20 x = 0;
-30 int y;
-40 y = height() / 2;
-50 if (x < width())
-60 plot(x, y, 0xffffff);
-70 x = x + 1;
-80 goto l50;
-90 endif
+005 clear();
+010 int x;
+020 x = 0;
+030 int y;
+040 y = height() / 2;
+050 if (x < width())
+060 plot(x, y, 0xffffff);
+070 x = x + 1;
+080 goto l50;
+090 endif
+100 x = width() / 2;
+110 y = 0;
+120 if (y < height())
+130 plot(x, y, 0xffffff);
+140 y = y + 1;
+150 goto l120;
+160 endif;

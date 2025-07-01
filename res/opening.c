@@ -14,7 +14,7 @@ static void __move(int x, int y)
   char buffer[128];
   int len;
 
-  len = snprintf(buffer, sizeof(buffer), "\e[%d;%d;H", y, x * 2);
+  len = snprintf(buffer, sizeof(buffer), "\e[%d;%d;H", y, x);
   write(1, buffer, len);
 }
 
@@ -189,7 +189,7 @@ void plot(int x, int y, int color)
 	  (color >> 8) & 255,
 	  (color >> 16) & 255
 	  );
-  write(1, "  ", 2);
+  write(1, " ", 1);
 }
 
 int width()

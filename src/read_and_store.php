@@ -20,7 +20,11 @@ function read_and_store($loading = NULL)
     $matches = [];
     if (preg_match('/^([0-9]+)(.*)$/', $line, $matches, PREG_OFFSET_CAPTURE))
     {
-	$number = (int)$matches[1][0];
+	if (($number = (int)$matches[1][0]) == 0)
+	{
+	    echo "Value 0 cannot be used as label.\n";
+	    return (true);
+	}
 	$content = strtolower(trim($matches[2][0]));
 	if ($loading != NULL)
 	{
