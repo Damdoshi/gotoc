@@ -58,6 +58,7 @@ function inline_php($file) {
 $entry = $argv[1];
 
 // Sortie finale avec UN seul <?php
+echo "#!/usr/bin/env php\n";
 echo "<?php\n";
 echo "/* Single-file build of ".basename($entry)." */\n";
 echo inline_php($entry);
