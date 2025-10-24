@@ -24,6 +24,8 @@ function _list($line)
 
     $padding = 0;
     ksort($listing, SORT_NUMERIC);
+    if (!count($listing))
+        return (true);
     $mx = max(array_keys($listing));
     while ($mx >= 10)
     {
