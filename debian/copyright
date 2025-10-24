@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: gotoc
+Source: https://github.com/Damdoshi/gotoc
+
+Files: *
+Copyright: 2025 technocore technocore@technocore
+License: GNU GPL3
+

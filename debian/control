@@ -1,0 +1,13 @@
+Source: gotoc
+Priority: optional
+Maintainer: technocore <technocore@technocore>
+Build-Depends: debhelper-compat (= 13), php-cli, gcc
+Standards-Version: 4.6.2
+
+Package: gotoc
+Section: libdevel
+Architecture: all
+Depends: ${misc:Depends}
+Description: Pseudo-programming language base
+ on gcc and that look likes unstructured BASIC
+ made from C like syntax.
