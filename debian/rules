@@ -1,4 +1,3 @@
 #!/usr/bin/make -f
 %:
-	php make.php gotoc.php > gotoc
 	dh $@

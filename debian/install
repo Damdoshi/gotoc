@@ -1,1 +1,6 @@
 gotoc usr/bin
+gotoc.php opt/gotoc/
+res opt/gotoc/
+src opt/gotoc/
+examples/* usr/share/gotoc/examples/
+gotoc.1 usr/share/man/man1/
